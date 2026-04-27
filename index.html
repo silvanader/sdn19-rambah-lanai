@@ -618,7 +618,10 @@
     display: flex; align-items: center; justify-content: center;
     text-decoration: none; font-size: 18px; transition: background .2s;
   }
-  .social-btn:hover { background: var(--blue); }
+  .social-btn { color: rgba(255,255,255,.7); }
+  .social-btn.ig:hover { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color: white; }
+  .social-btn.wa:hover { background: #25D366; color: white; }
+  .social-btn.em:hover { background: var(--blue); color: white; }
   .footer-col-title {
     font-size: 13px; font-weight: 800; color: white;
     text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;
@@ -858,6 +861,80 @@
     .guru-grid, .guru-grid.row3, .guru-grid.row2 { grid-template-columns: repeat(2, 1fr); }
   }
 
+  /* ── KALENDER AKADEMIK ── */
+  .sem-tab {
+    background: white; border: 2px solid var(--gray-200);
+    color: var(--gray-700); font-size: 14px; font-weight: 800;
+    padding: 12px 28px; border-radius: 12px; cursor: pointer;
+    transition: all .2s; font-family: 'Nunito', sans-serif;
+  }
+  .sem-tab:hover { border-color: var(--blue); color: var(--blue); }
+  .sem-tab.active-tab {
+    background: var(--blue); border-color: var(--blue);
+    color: white; box-shadow: 0 6px 20px rgba(30,58,138,.3);
+  }
+  .kaldik-header {
+    display: flex; align-items: center; gap: 16px;
+    border-radius: 16px; padding: 24px 28px; margin-bottom: 28px;
+  }
+  .kaldik-header.ganjil { background: linear-gradient(135deg, #1E3A8A, #2563EB); }
+  .kaldik-header.genap  { background: linear-gradient(135deg, #065F46, #16A34A); }
+  .kaldik-header-icon { font-size: 36px; }
+  .kaldik-header-title { font-size: 20px; font-weight: 900; color: white; }
+  .kaldik-header-sub { font-size: 13px; color: rgba(255,255,255,.75); font-weight: 700; margin-top: 2px; }
+  .kaldik-header-badge {
+    margin-left: auto; background: rgba(255,255,255,.2);
+    color: white; font-size: 12px; font-weight: 800;
+    padding: 6px 14px; border-radius: 100px; white-space: nowrap;
+  }
+  .kaldik-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  }
+  .kaldik-card {
+    background: white; border-radius: 14px; padding: 20px;
+    box-shadow: var(--shadow-sm); border: 1px solid var(--gray-200);
+    border-left: 4px solid transparent;
+    transition: transform .2s, box-shadow .2s;
+    position: relative;
+  }
+  .kaldik-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .kaldik-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    position: absolute; top: 20px; right: 16px;
+  }
+  .cat-awal   { border-left-color: var(--blue); }
+  .cat-awal   .kaldik-dot { background: var(--blue); }
+  .cat-ujian  { border-left-color: #F97316; }
+  .cat-ujian  .kaldik-dot { background: #F97316; }
+  .cat-kegiatan { border-left-color: var(--green); }
+  .cat-kegiatan .kaldik-dot { background: var(--green); }
+  .cat-libur  { border-left-color: #EF4444; }
+  .cat-libur  .kaldik-dot { background: #EF4444; }
+  .kaldik-date {
+    font-size: 11px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: .8px; color: var(--gray-600); margin-bottom: 6px;
+  }
+  .kaldik-event {
+    font-size: 14px; font-weight: 800; color: var(--gray-800); line-height: 1.4; margin-bottom: 6px;
+  }
+  .kaldik-note {
+    font-size: 12px; color: var(--gray-600); font-weight: 600; line-height: 1.5;
+  }
+  .legenda {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 800; color: var(--gray-700);
+    background: white; border: 1px solid var(--gray-200);
+    padding: 6px 14px; border-radius: 100px;
+  }
+  @media (max-width: 900px) {
+    .kaldik-grid { grid-template-columns: repeat(2,1fr); }
+  }
+  @media (max-width: 560px) {
+    .kaldik-grid { grid-template-columns: 1fr; }
+    .kaldik-header { flex-wrap: wrap; }
+    .kaldik-header-badge { margin-left: 0; }
+  }
+
   /* ── SCROLL ANIMATIONS ── */
   .reveal {
     opacity: 0; transform: translateY(30px);
@@ -912,8 +989,8 @@
       <li><a href="#profil">Profil</a></li>
       <li><a href="#guru">Guru &amp; Staf</a></li>
       <li><a href="#ekskul">Ekskul</a></li>
+      <li><a href="#kalender">Kaldik</a></li>
       <li><a href="#berita">Berita</a></li>
-      <li><a href="#galeri">Galeri</a></li>
       <li><a href="#kontak" class="nav-cta">Kontak</a></li>
     </ul>
     <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -925,7 +1002,7 @@
     <a href="#profil" onclick="toggleMenu()">Profil Sekolah</a>
     <a href="#guru" onclick="toggleMenu()">Data Guru &amp; Staf</a>
     <a href="#ekskul" onclick="toggleMenu()">Ekstrakurikuler</a>
-    <a href="#berita" onclick="toggleMenu()">Berita &amp; Pengumuman</a>
+    <a href="#kalender" onclick="toggleMenu()">Kalender Akademik</a>
     <a href="#galeri" onclick="toggleMenu()">Galeri Kegiatan</a>
     <a href="#kontak" onclick="toggleMenu()">Kontak</a>
   </div>
@@ -1037,9 +1114,9 @@
       <div class="sambutan-photo-col reveal">
         <div class="sambutan-avatar">👨‍🏫</div>
         <div class="sambutan-name-plate" style="width:200px;">
-          <div class="sambutan-name">Kepala Sekolah</div>
-          <div class="sambutan-role">SDN 19 Rambah Lanai</div>
-          <div class="sambutan-role" style="margin-top:4px;"><span>Kec. Padang Gelugur</span></div>
+          <div class="sambutan-name">Zainuddin, S.Pd</div>
+          <div class="sambutan-role">Kepala SDN 19 Rambah Lanai</div>
+          <div class="sambutan-role" style="margin-top:4px;"><span>Kec. Padang Gelugur, Kab. Pasaman</span></div>
         </div>
       </div>
 
@@ -1068,6 +1145,10 @@
           </p>
           <p>
             Wassalamu'alaikum Warahmatullahi Wabarakatuh.
+          </p>
+          <p style="margin-top:16px;font-weight:800;color:var(--gray-800);">
+            Zainuddin, S.Pd<br>
+            <span style="font-size:13px;font-weight:600;color:var(--gray-600);">Kepala SDN 19 Rambah Lanai</span>
           </p>
         </div>
 
@@ -1137,6 +1218,132 @@
           <li><span class="misi-num">6</span>Menerapkan manajemen partisipatif dengan melibatkan seluruh warga sekolah dan komite sekolah</li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DATA GURU & STAF ── -->
+<section id="guru">
+  <div class="section-inner">
+    <div class="section-header center">
+      <div class="section-label">👥 Sumber Daya Manusia</div>
+      <h2 class="section-title">Data Guru <span>&amp; Staf</span></h2>
+      <p class="section-desc">
+        Tenaga pendidik dan staf profesional yang berdedikasi melayani seluruh warga SDN 19 Rambah Lanai.
+      </p>
+    </div>
+
+    <!-- Kepala Sekolah -->
+    <div class="guru-group-title">
+      <div class="guru-group-line"></div>
+      Pimpinan Sekolah
+    </div>
+    <div style="display:flex; justify-content:center;">
+      <div class="guru-card kepala reveal" style="width:220px;">
+        <div class="guru-avatar avatar-gold">👨‍💼</div>
+        <div class="guru-role-badge badge-gold">Kepala Sekolah</div>
+        <div class="guru-name">Zainuddin, S.Pd</div>
+        <div class="guru-sub">Kepala SDN 19 Rambah Lanai</div>
+      </div>
+    </div>
+
+    <!-- Guru Kelas -->
+    <div class="guru-group-title" style="margin-top:40px;">
+      <div class="guru-group-line"></div>
+      Guru Kelas
+    </div>
+    <div class="guru-grid reveal">
+      <div class="guru-card guru-kls">
+        <div class="guru-avatar avatar-blue">👨‍🏫</div>
+        <div class="guru-role-badge badge-blue">Guru Kelas I</div>
+        <div class="guru-name">Oten Saputra, S.Pd</div>
+        <div class="guru-sub">Guru Kelas I</div>
+      </div>
+      <div class="guru-card guru-kls">
+        <div class="guru-avatar avatar-blue">👨‍🏫</div>
+        <div class="guru-role-badge badge-blue">Guru Kelas II</div>
+        <div class="guru-name">Ali Umar, S.Pd</div>
+        <div class="guru-sub">Guru Kelas II</div>
+      </div>
+      <div class="guru-card guru-kls">
+        <div class="guru-avatar avatar-blue">👩‍🏫</div>
+        <div class="guru-role-badge badge-blue">Guru Kelas III</div>
+        <div class="guru-name">Siti Suharni, S.Pd</div>
+        <div class="guru-sub">Guru Kelas III</div>
+      </div>
+      <div class="guru-card guru-kls">
+        <div class="guru-avatar avatar-blue">👩‍🏫</div>
+        <div class="guru-role-badge badge-blue">Guru Kelas IV</div>
+        <div class="guru-name">Latifah Hannum, S.Pd</div>
+        <div class="guru-sub">Guru Kelas IV</div>
+      </div>
+      <div class="guru-card guru-kls">
+        <div class="guru-avatar avatar-blue">👩‍🏫</div>
+        <div class="guru-role-badge badge-blue">Guru Kelas V</div>
+        <div class="guru-name">Halimatus Saddiah, S.Pd</div>
+        <div class="guru-sub">Guru Kelas V</div>
+      </div>
+      <div class="guru-card guru-kls">
+        <div class="guru-avatar avatar-blue">👩‍🏫</div>
+        <div class="guru-role-badge badge-blue">Guru Kelas VI</div>
+        <div class="guru-name">Rohana Siregar, S.Pd</div>
+        <div class="guru-sub">Guru Kelas VI</div>
+      </div>
+    </div>
+
+    <!-- Guru Mapel -->
+    <div class="guru-group-title" style="margin-top:40px;">
+      <div class="guru-group-line"></div>
+      Guru Mata Pelajaran
+    </div>
+    <div class="guru-grid row3 reveal">
+      <div class="guru-card guru-kls">
+        <div class="guru-avatar avatar-blue">👩‍🏫</div>
+        <div class="guru-role-badge badge-blue">Guru Bahasa Inggris</div>
+        <div class="guru-name">Erri Sumita, S.Pd</div>
+        <div class="guru-sub">Mata Pelajaran Bahasa Inggris</div>
+      </div>
+      <div class="guru-card guru-kls">
+        <div class="guru-avatar avatar-blue">👩‍🏫</div>
+        <div class="guru-role-badge badge-blue">Guru PAI</div>
+        <div class="guru-name">Resmita, S.PdI</div>
+        <div class="guru-sub">Pendidikan Agama Islam</div>
+      </div>
+      <div class="guru-card guru-kls">
+        <div class="guru-avatar avatar-blue">👨‍🏫</div>
+        <div class="guru-role-badge badge-blue">Guru PJOK</div>
+        <div class="guru-name">Paisal Ikhlas, S.Pd</div>
+        <div class="guru-sub">Pendidikan Jasmani, Olahraga &amp; Kesehatan</div>
+      </div>
+    </div>
+
+    <!-- Staf -->
+    <div class="guru-group-title" style="margin-top:40px;">
+      <div class="guru-group-line"></div>
+      Tenaga Kependidikan &amp; Staf
+    </div>
+    <div class="guru-grid row2 reveal">
+      <div class="guru-card staf-card">
+        <div class="guru-avatar avatar-green">💻</div>
+        <div class="guru-role-badge badge-green">Operator Sekolah</div>
+        <div class="guru-name">Ade Zaini, S.Pd</div>
+        <div class="guru-sub">Operator Sekolah</div>
+      </div>
+      <div class="guru-card staf-card">
+        <div class="guru-avatar avatar-green">🔐</div>
+        <div class="guru-role-badge badge-green">Penjaga Sekolah</div>
+        <div class="guru-name">Muhammad Darwis Setiawan</div>
+        <div class="guru-sub">Penjaga Sekolah</div>
+      </div>
+    </div>
+
+    <!-- Info note -->
+    <div style="margin-top:40px;background:white;border-radius:14px;padding:20px 24px;border:1px solid var(--gray-200);display:flex;align-items:center;gap:14px;box-shadow:var(--shadow-sm);">
+      <span style="font-size:24px;flex-shrink:0;">ℹ️</span>
+      <p style="font-size:13.5px;color:var(--gray-600);font-weight:600;line-height:1.6;">
+        Nama lengkap tenaga pendidik dan staf akan ditampilkan setelah data resmi tersedia.
+        Untuk informasi lebih lanjut, silakan hubungi kami melalui <a href="#kontak" style="color:var(--blue);font-weight:800;text-decoration:none;">halaman kontak</a> atau WhatsApp sekolah.
+      </p>
     </div>
   </div>
 </section>
@@ -1298,6 +1505,418 @@
   </div>
 </section>
 
+<!-- ── KALENDER AKADEMIK ── -->
+<section id="kalender" style="background:var(--gray-50);padding:96px 24px;">
+  <div class="section-inner">
+    <div class="section-header center">
+      <div class="section-label">📅 Kalender Akademik</div>
+      <h2 class="section-title">Kalender <span>Akademik</span></h2>
+      <p class="section-desc">
+        Berdasarkan Keputusan Kepala Dinas Pendidikan Kabupaten Pasaman<br>
+        Berdasarkan Keputusan Kepala Dinas Pendidikan Kabupaten Pasaman — untuk jenjang SD.
+      </p>
+
+    <!-- Pilih Tahun Pelajaran -->
+    <div style="display:flex;justify-content:center;gap:12px;margin-bottom:8px;flex-wrap:wrap;">
+      <button onclick="showTP(1)" id="tpBtn1" class="sem-tab active-tab">📅 TP 2025/2026</button>
+      <button onclick="showTP(2)" id="tpBtn2" class="sem-tab">📅 TP 2026/2027</button>
+    </div>
+
+    <!-- TP 2025/2026 -->
+    <div id="tp1">
+      <div style="text-align:center;font-size:12px;color:var(--gray-600);font-weight:700;margin-bottom:24px;">
+        SK Disdik Pasaman No. <strong>420/13/Sekre-Disdik/2025</strong>
+      </div>
+    </div>
+
+    <!-- Tab Semester -->
+    <div style="display:flex;justify-content:center;gap:12px;margin-bottom:40px;">
+      <button onclick="showSem(1)" id="tab1" class="sem-tab active-tab">📘 Semester Ganjil</button>
+      <button onclick="showSem(2)" id="tab2" class="sem-tab">📗 Semester Genap</button>
+    </div>
+
+    <!-- SEMESTER GANJIL -->
+    <div id="sem1">
+      <div class="kaldik-header ganjil">
+        <div class="kaldik-header-icon">📘</div>
+        <div>
+          <div class="kaldik-header-title">Semester Ganjil</div>
+          <div class="kaldik-header-sub">Juli – Desember 2025</div>
+        </div>
+        <div class="kaldik-header-badge">± 19 Minggu Efektif</div>
+      </div>
+      <div class="kaldik-grid">
+
+        <div class="kaldik-card cat-awal">
+          <div class="kaldik-dot"></div>
+          <div class="kaldik-date">14 Juli 2025</div>
+          <div class="kaldik-event">Awal Tahun Pelajaran 2025/2026</div>
+          <div class="kaldik-note">Hari pertama masuk sekolah</div>
+        </div>
+
+        <div class="kaldik-card cat-awal">
+          <div class="kaldik-dot"></div>
+          <div class="kaldik-date">14 – 16 Juli 2025</div>
+          <div class="kaldik-event">MPLS (Masa Pengenalan Lingkungan Sekolah)</div>
+          <div class="kaldik-note">Khusus murid baru Kelas I</div>
+        </div>
+
+        <div class="kaldik-card cat-libur">
+          <div class="kaldik-dot"></div>
+          <div class="kaldik-date">17 Agustus 2025</div>
+          <div class="kaldik-event">Libur Hari Kemerdekaan RI ke-80</div>
+          <div class="kaldik-note">Hari Libur Nasional</div>
+        </div>
+
+        <div class="kaldik-card cat-ujian">
+          <div class="kaldik-dot"></div>
+          <div class="kaldik-date">September 2025</div>
+          <div class="kaldik-event">Penilaian Tengah Semester (PTS) Ganjil</div>
+          <div class="kaldik-note">Menyesuaikan jadwal satuan pendidikan</div>
+        </div>
+
+        <div class="kaldik-card cat-libur">
+          <div class="kaldik-dot"></div>
+          <div class="kaldik-date">Oktober 2025</div>
+          <div class="kaldik-event">Libur Maulid Nabi Muhammad SAW</div>
+          <div class="kaldik-note">Hari Libur Nasional</div>
+        </div>
+
+        <div class="kaldik-card cat-ujian">
+          <div class="kaldik-dot"></div>
+          <div class="kaldik-date">1 – 13 Desember 2025</div>
+          <div class="kaldik-event">Sumatif Akhir Semester (SAS) Ganjil</div>
+          <div class="kaldik-note">Penilaian akhir semester ganjil seluruh kelas</div>
+        </div>
+
+        <div class="kaldik-card cat-kegiatan">
+          <div class="kaldik-dot"></div>
+          <div class="kaldik-date">15 – 19 Desember 2025</div>
+          <div class="kaldik-event">Pengolahan Nilai & Class Meeting</div>
+          <div class="kaldik-note">Rekap nilai dan kegiatan akhir semester</div>
+        </div>
+
+        <div class="kaldik-card cat-kegiatan">
+          <div class="kaldik-dot"></div>
+          <div class="kaldik-date">20 Desember 2025</div>
+          <div class="kaldik-event">Pembagian Rapor Semester Ganjil</div>
+          <div class="kaldik-note">Penyerahan rapor kepada orang tua/wali</div>
+        </div>
+
+        <div class="kaldik-card cat-libur">
+          <div class="kaldik-dot"></div>
+          <div class="kaldik-date">22 Des 2025 – 3 Jan 2026</div>
+          <div class="kaldik-event">Libur Semester Ganjil</div>
+          <div class="kaldik-note">9 hari libur termasuk Natal & Tahun Baru</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SEMESTER GENAP -->
+    <div id="sem2" style="display:none;">
+      <div class="kaldik-header genap">
+        <div class="kaldik-header-icon">📗</div>
+        <div>
+          <div class="kaldik-header-title">Semester Genap</div>
+          <div class="kaldik-header-sub">Januari – Juni 2026</div>
+        </div>
+        <div class="kaldik-header-badge">± 18 Minggu Efektif</div>
+      </div>
+      <div class="kaldik-grid">
+
+        <div class="kaldik-card cat-awal">
+          <div class="kaldik-dot"></div>
+          <div class="kaldik-date">5 Januari 2026</div>
+          <div class="kaldik-event">Awal Semester Genap</div>
+          <div class="kaldik-note">Hari pertama masuk semester 2</div>
+        </div>
+
+        <div class="kaldik-card cat-libur">
+          <div class="kaldik-dot"></div>
+          <div class="kaldik-date">Januari – Maret 2026</div>
+          <div class="kaldik-event">Libur Isra Mi'raj & Hari Besar Nasional</div>
+          <div class="kaldik-note">Mengikuti kalender libur nasional</div>
+        </div>
+
+        <div class="kaldik-card cat-kegiatan">
+          <div class="kaldik-dot"></div>
+          <div class="kaldik-date">Maret 2026</div>
+          <div class="kaldik-event">Ramadan & Pesantren Kilat</div>
+          <div class="kaldik-note">Kegiatan keagamaan selama Ramadan</div>
+        </div>
+
+        <div class="kaldik-card cat-ujian">
+          <div class="kaldik-dot"></div>
+          <div class="kaldik-date">Maret 2026</div>
+          <div class="kaldik-event">Penilaian Tengah Semester (PTS) Genap</div>
+          <div class="kaldik-note">Menyesuaikan jadwal satuan pendidikan</div>
+        </div>
+
+        <div class="kaldik-card cat-libur">
+          <div class="kaldik-dot"></div>
+          <div class="kaldik-date">Maret – April 2026</div>
+          <div class="kaldik-event">Libur Idul Fitri 1447 H</div>
+          <div class="kaldik-note">Termasuk cuti bersama Lebaran</div>
+        </div>
+
+        <div class="kaldik-card cat-ujian">
+          <div class="kaldik-dot"></div>
+          <div class="kaldik-date">April – Mei 2026</div>
+          <div class="kaldik-event">Ujian Sekolah (US) Kelas VI</div>
+          <div class="kaldik-note">Ujian akhir jenjang SD untuk Kelas VI</div>
+        </div>
+
+        <div class="kaldik-card cat-ujian">
+          <div class="kaldik-dot"></div>
+          <div class="kaldik-date">2 – 13 Juni 2026</div>
+          <div class="kaldik-event">Sumatif Akhir Semester (SAS) Genap</div>
+          <div class="kaldik-note">Penilaian akhir semester genap Kelas I–V</div>
+        </div>
+
+        <div class="kaldik-card cat-kegiatan">
+          <div class="kaldik-dot"></div>
+          <div class="kaldik-date">15 – 19 Juni 2026</div>
+          <div class="kaldik-event">Pengolahan Nilai & Class Meeting</div>
+          <div class="kaldik-note">Rekap nilai akhir tahun ajaran</div>
+        </div>
+
+        <div class="kaldik-card cat-kegiatan">
+          <div class="kaldik-dot"></div>
+          <div class="kaldik-date">20 Juni 2026</div>
+          <div class="kaldik-event">Pembagian Rapor & Kenaikan Kelas</div>
+          <div class="kaldik-note">Penyerahan rapor dan pengumuman kenaikan kelas</div>
+        </div>
+
+        <div class="kaldik-card cat-libur">
+          <div class="kaldik-dot"></div>
+          <div class="kaldik-date">22 Juni – 12 Juli 2026</div>
+          <div class="kaldik-event">Libur Akhir Tahun Pelajaran 2025/2026</div>
+          <div class="kaldik-note">19 hari libur — sekaligus persiapan TP 2026/2027</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Legenda & catatan -->
+    <div style="margin-top:40px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+      <span class="legenda awal">🔵 Awal / Akhir Semester</span>
+      <span class="legenda ujian">🟠 Ujian & Penilaian</span>
+      <span class="legenda kegiatan">🟢 Kegiatan Sekolah</span>
+      <span class="legenda libur">🔴 Libur</span>
+    </div>
+
+    <!-- Download & sumber -->
+    <div style="margin-top:32px;background:var(--blue);border-radius:16px;padding:24px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
+      <div>
+        <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.6);margin-bottom:4px;">Sumber Resmi</div>
+        <div style="font-size:15px;font-weight:800;color:white;">SK Kadisdik Pasaman No. 420/13/Sekre-Disdik/2025</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.7);font-weight:600;margin-top:2px;">Kalender Pendidikan TK PAUD SD SMP Kab. Pasaman TP 2025/2026</div>
+      </div>
+      <a href="https://drive.google.com/file/d/1rYoPNkrBfBSttaUFqK_cCGIwRwgbAXZp/view?usp=sharing"
+         target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:10px;background:var(--yellow);color:var(--blue);font-size:14px;font-weight:900;padding:14px 24px;border-radius:12px;text-decoration:none;white-space:nowrap;box-shadow:0 6px 20px rgba(250,204,21,.4);transition:all .2s;"
+         onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+        ⬇️ Unduh Kaldik Resmi PDF
+      </a>
+    </div>
+
+    </div><!-- end tp1 -->
+
+    <!-- TP 2026/2027 -->
+    <div id="tp2" style="display:none;">
+      <!-- Notif belum resmi -->
+      <div style="background:var(--yellow-pale);border:2px dashed var(--yellow-deep);border-radius:14px;padding:16px 22px;margin-bottom:28px;display:flex;align-items:flex-start;gap:12px;">
+        <span style="font-size:22px;flex-shrink:0;">⚠️</span>
+        <div>
+          <div style="font-size:13px;font-weight:900;color:var(--yellow-deep);margin-bottom:3px;">Perkiraan — SK Resmi Belum Terbit</div>
+          <div style="font-size:12.5px;font-weight:600;color:var(--gray-700);line-height:1.6;">
+            Kalender ini merupakan <strong>estimasi</strong> berdasarkan pola Kaldik Disdik Pasaman tahun sebelumnya dan hari libur nasional 2026/2027.
+            SK resmi Disdik Pasaman untuk TP 2026/2027 biasanya diterbitkan pada <strong>Juni–Juli 2026</strong>. Halaman ini akan diperbarui setelah SK resmi terbit.
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;font-size:12px;color:var(--gray-600);font-weight:700;margin-bottom:24px;">
+        Estimasi — menunggu SK Kadisdik Pasaman TP 2026/2027
+      </div>
+
+      <!-- Tab Semester 2026/2027 -->
+      <div style="display:flex;justify-content:center;gap:12px;margin-bottom:32px;">
+        <button onclick="showSem27(1)" id="tab27a" class="sem-tab active-tab">📘 Semester Ganjil</button>
+        <button onclick="showSem27(2)" id="tab27b" class="sem-tab">📗 Semester Genap</button>
+      </div>
+
+      <!-- Semester Ganjil 2026/2027 -->
+      <div id="sem27a">
+        <div class="kaldik-header ganjil">
+          <div class="kaldik-header-icon">📘</div>
+          <div>
+            <div class="kaldik-header-title">Semester Ganjil</div>
+            <div class="kaldik-header-sub">Juli – Desember 2026</div>
+          </div>
+          <div class="kaldik-header-badge">± 19 Minggu Efektif</div>
+        </div>
+        <div class="kaldik-grid">
+          <div class="kaldik-card cat-awal">
+            <div class="kaldik-dot"></div>
+            <div class="kaldik-date">13 Juli 2026</div>
+            <div class="kaldik-event">Awal Tahun Pelajaran 2026/2027</div>
+            <div class="kaldik-note">Hari pertama masuk sekolah</div>
+          </div>
+          <div class="kaldik-card cat-awal">
+            <div class="kaldik-dot"></div>
+            <div class="kaldik-date">13 – 15 Juli 2026</div>
+            <div class="kaldik-event">MPLS (Masa Pengenalan Lingkungan Sekolah)</div>
+            <div class="kaldik-note">Khusus murid baru Kelas I</div>
+          </div>
+          <div class="kaldik-card cat-libur">
+            <div class="kaldik-dot"></div>
+            <div class="kaldik-date">17 Agustus 2026</div>
+            <div class="kaldik-event">Libur HUT RI ke-81</div>
+            <div class="kaldik-note">Hari Libur Nasional</div>
+          </div>
+          <div class="kaldik-card cat-ujian">
+            <div class="kaldik-dot"></div>
+            <div class="kaldik-date">September – Oktober 2026</div>
+            <div class="kaldik-event">Penilaian Tengah Semester (PTS) Ganjil</div>
+            <div class="kaldik-note">Menyesuaikan jadwal satuan pendidikan</div>
+          </div>
+          <div class="kaldik-card cat-libur">
+            <div class="kaldik-dot"></div>
+            <div class="kaldik-date">November 2026</div>
+            <div class="kaldik-event">Libur Maulid Nabi Muhammad SAW 1448H</div>
+            <div class="kaldik-note">Hari Libur Nasional</div>
+          </div>
+          <div class="kaldik-card cat-ujian">
+            <div class="kaldik-dot"></div>
+            <div class="kaldik-date">1 – 12 Desember 2026</div>
+            <div class="kaldik-event">Sumatif Akhir Semester (SAS) Ganjil</div>
+            <div class="kaldik-note">Penilaian akhir semester ganjil seluruh kelas</div>
+          </div>
+          <div class="kaldik-card cat-kegiatan">
+            <div class="kaldik-dot"></div>
+            <div class="kaldik-date">14 – 18 Desember 2026</div>
+            <div class="kaldik-event">Pengolahan Nilai & Class Meeting</div>
+            <div class="kaldik-note">Rekap nilai dan kegiatan akhir semester</div>
+          </div>
+          <div class="kaldik-card cat-kegiatan">
+            <div class="kaldik-dot"></div>
+            <div class="kaldik-date">19 Desember 2026</div>
+            <div class="kaldik-event">Pembagian Rapor Semester Ganjil</div>
+            <div class="kaldik-note">Penyerahan rapor kepada orang tua/wali</div>
+          </div>
+          <div class="kaldik-card cat-libur">
+            <div class="kaldik-dot"></div>
+            <div class="kaldik-date">22 Des 2026 – 2 Jan 2027</div>
+            <div class="kaldik-event">Libur Semester Ganjil</div>
+            <div class="kaldik-note">Termasuk libur Natal & Tahun Baru 2027</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Semester Genap 2026/2027 -->
+      <div id="sem27b" style="display:none;">
+        <div class="kaldik-header genap">
+          <div class="kaldik-header-icon">📗</div>
+          <div>
+            <div class="kaldik-header-title">Semester Genap</div>
+            <div class="kaldik-header-sub">Januari – Juni 2027</div>
+          </div>
+          <div class="kaldik-header-badge">± 18 Minggu Efektif</div>
+        </div>
+        <div class="kaldik-grid">
+          <div class="kaldik-card cat-awal">
+            <div class="kaldik-dot"></div>
+            <div class="kaldik-date">4 Januari 2027</div>
+            <div class="kaldik-event">Awal Semester Genap</div>
+            <div class="kaldik-note">Hari pertama masuk semester 2</div>
+          </div>
+          <div class="kaldik-card cat-libur">
+            <div class="kaldik-dot"></div>
+            <div class="kaldik-date">Januari – Februari 2027</div>
+            <div class="kaldik-event">Libur Awal Ramadan 1448H</div>
+            <div class="kaldik-note">Mengikuti ketetapan libur nasional & Disdik</div>
+          </div>
+          <div class="kaldik-card cat-kegiatan">
+            <div class="kaldik-dot"></div>
+            <div class="kaldik-date">Februari – Maret 2027</div>
+            <div class="kaldik-event">Pesantren Kilat & Kegiatan Ramadan</div>
+            <div class="kaldik-note">Kultum, tadarus, dan kegiatan keagamaan Ramadan</div>
+          </div>
+          <div class="kaldik-card cat-ujian">
+            <div class="kaldik-dot"></div>
+            <div class="kaldik-date">Februari – Maret 2027</div>
+            <div class="kaldik-event">Penilaian Tengah Semester (PTS) Genap</div>
+            <div class="kaldik-note">Menyesuaikan jadwal satuan pendidikan</div>
+          </div>
+          <div class="kaldik-card cat-libur">
+            <div class="kaldik-dot"></div>
+            <div class="kaldik-date">Maret 2027</div>
+            <div class="kaldik-event">Libur Idul Fitri 1448H</div>
+            <div class="kaldik-note">Termasuk cuti bersama Lebaran</div>
+          </div>
+          <div class="kaldik-card cat-ujian">
+            <div class="kaldik-dot"></div>
+            <div class="kaldik-date">April – Mei 2027</div>
+            <div class="kaldik-event">Ujian Sekolah (US) Kelas VI</div>
+            <div class="kaldik-note">Ujian akhir jenjang SD untuk Kelas VI</div>
+          </div>
+          <div class="kaldik-card cat-ujian">
+            <div class="kaldik-dot"></div>
+            <div class="kaldik-date">1 – 12 Juni 2027</div>
+            <div class="kaldik-event">Sumatif Akhir Semester (SAS) Genap</div>
+            <div class="kaldik-note">Penilaian akhir tahun untuk Kelas I–V</div>
+          </div>
+          <div class="kaldik-card cat-kegiatan">
+            <div class="kaldik-dot"></div>
+            <div class="kaldik-date">14 – 18 Juni 2027</div>
+            <div class="kaldik-event">Pengolahan Nilai & Kenaikan Kelas</div>
+            <div class="kaldik-note">Rekap nilai dan pengumuman kenaikan kelas</div>
+          </div>
+          <div class="kaldik-card cat-kegiatan">
+            <div class="kaldik-dot"></div>
+            <div class="kaldik-date">19 Juni 2027</div>
+            <div class="kaldik-event">Pembagian Rapor Akhir Tahun</div>
+            <div class="kaldik-note">Penyerahan rapor kepada orang tua/wali</div>
+          </div>
+          <div class="kaldik-card cat-libur">
+            <div class="kaldik-dot"></div>
+            <div class="kaldik-date">21 Juni – 10 Juli 2027</div>
+            <div class="kaldik-event">Libur Akhir Tahun Pelajaran 2026/2027</div>
+            <div class="kaldik-note">Persiapan menyambut Tahun Pelajaran 2027/2028</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legenda 2026/2027 -->
+      <div style="margin-top:40px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+        <span class="legenda awal">🔵 Awal / Akhir Semester</span>
+        <span class="legenda ujian">🟠 Ujian & Penilaian</span>
+        <span class="legenda kegiatan">🟢 Kegiatan Sekolah</span>
+        <span class="legenda libur">🔴 Libur</span>
+      </div>
+
+      <!-- Info update -->
+      <div style="margin-top:28px;background:var(--blue);border-radius:16px;padding:24px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
+        <div>
+          <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.6);margin-bottom:4px;">Status Kaldik</div>
+          <div style="font-size:15px;font-weight:800;color:white;">SK Disdik Pasaman TP 2026/2027 Belum Terbit</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.7);font-weight:600;margin-top:2px;">Estimasi berdasarkan pola kaldik tahun sebelumnya — akan diperbarui segera setelah SK resmi diterbitkan</div>
+        </div>
+        <a href="https://drive.google.com/file/d/1rYoPNkrBfBSttaUFqK_cCGIwRwgbAXZp/view?usp=sharing"
+           target="_blank" rel="noopener"
+           style="display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);color:white;font-size:13px;font-weight:800;padding:12px 22px;border-radius:12px;text-decoration:none;white-space:nowrap;transition:all .2s;"
+           onmouseover="this.style.background='rgba(255,255,255,.25)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">
+          📄 Lihat Kaldik 2025/2026 (Resmi)
+        </a>
+      </div>
+
+    </div><!-- end tp2 -->
+
+  </div>
+</section>
+
 <!-- ── KONTAK ── -->
 <section id="kontak">
   <div class="section-inner">
@@ -1322,7 +1941,7 @@
           <div class="kontak-icon">🕗</div>
           <div>
             <div class="kontak-label">Jam Operasional</div>
-            <div class="kontak-value">Senin – Kamis: 07.30 – 13.00 WIB<br>Jum'at – Sabtu: 08.00 – 12.00 WIB</div>
+            <div class="kontak-value">Senin – Kamis: 07.00 – 12.30 WIB<br>Jum'at – Sabtu: 07.00 – 11.30 WIB</div>
           </div>
         </div>
         <div class="kontak-item reveal">
@@ -1333,14 +1952,22 @@
           </div>
         </div>
         <div class="kontak-item reveal">
-          <div class="kontak-icon">📸</div>
+          <div class="kontak-icon" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </div>
           <div>
             <div class="kontak-label">Instagram</div>
             <div class="kontak-value"><a href="https://www.instagram.com/sdn_19rambahlanai?igsh=dnp2azkwcDlkajd6" target="_blank" rel="noopener" style="color:var(--blue);font-weight:800;text-decoration:none;">@sdn_19rambahlanai</a></div>
           </div>
         </div>
         <div class="kontak-item reveal">
-          <div class="kontak-icon">💬</div>
+          <div class="kontak-icon" style="background:#25D366;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+          </div>
           <div>
             <div class="kontak-label">WhatsApp</div>
             <div class="kontak-value">
@@ -1382,126 +2009,6 @@
   </div>
 </section>
 
-<!-- ── DATA GURU & STAF ── -->
-<section id="guru">
-  <div class="section-inner">
-    <div class="section-header center">
-      <div class="section-label">👥 Sumber Daya Manusia</div>
-      <h2 class="section-title">Data Guru <span>&amp; Staf</span></h2>
-      <p class="section-desc">
-        Tenaga pendidik dan staf profesional yang berdedikasi melayani seluruh warga SDN 19 Rambah Lanai.
-      </p>
-    </div>
-
-    <!-- Kepala Sekolah -->
-    <div class="guru-group-title">
-      <div class="guru-group-line"></div>
-      Pimpinan Sekolah
-    </div>
-    <div class="guru-grid row3" style="max-width:320px;">
-      <div class="guru-card kepala reveal" style="grid-column:1;">
-        <div class="guru-avatar avatar-gold">👨‍💼</div>
-        <div class="guru-role-badge badge-gold">Kepala Sekolah</div>
-        <div class="guru-name">Kepala Sekolah</div>
-        <div class="guru-sub">SDN 19 Rambah Lanai</div>
-      </div>
-    </div>
-
-    <!-- Guru Kelas -->
-    <div class="guru-group-title" style="margin-top:40px;">
-      <div class="guru-group-line"></div>
-      Guru Kelas
-    </div>
-    <div class="guru-grid reveal">
-      <div class="guru-card guru-kls">
-        <div class="guru-avatar avatar-blue">👩‍🏫</div>
-        <div class="guru-role-badge badge-blue">Guru Kelas I</div>
-        <div class="guru-name">Guru Kelas I</div>
-        <div class="guru-sub">Kelas 1</div>
-      </div>
-      <div class="guru-card guru-kls">
-        <div class="guru-avatar avatar-blue">👩‍🏫</div>
-        <div class="guru-role-badge badge-blue">Guru Kelas II</div>
-        <div class="guru-name">Guru Kelas II</div>
-        <div class="guru-sub">Kelas 2</div>
-      </div>
-      <div class="guru-card guru-kls">
-        <div class="guru-avatar avatar-blue">👨‍🏫</div>
-        <div class="guru-role-badge badge-blue">Guru Kelas III</div>
-        <div class="guru-name">Guru Kelas III</div>
-        <div class="guru-sub">Kelas 3</div>
-      </div>
-      <div class="guru-card guru-kls">
-        <div class="guru-avatar avatar-blue">👩‍🏫</div>
-        <div class="guru-role-badge badge-blue">Guru Kelas IV</div>
-        <div class="guru-name">Guru Kelas IV</div>
-        <div class="guru-sub">Kelas 4</div>
-      </div>
-      <div class="guru-card guru-kls">
-        <div class="guru-avatar avatar-blue">👨‍🏫</div>
-        <div class="guru-role-badge badge-blue">Guru Kelas V</div>
-        <div class="guru-name">Guru Kelas V</div>
-        <div class="guru-sub">Kelas 5</div>
-      </div>
-      <div class="guru-card guru-kls">
-        <div class="guru-avatar avatar-blue">👩‍🏫</div>
-        <div class="guru-role-badge badge-blue">Guru Kelas VI</div>
-        <div class="guru-name">Guru Kelas VI</div>
-        <div class="guru-sub">Kelas 6</div>
-      </div>
-    </div>
-
-    <!-- Guru Mapel -->
-    <div class="guru-group-title" style="margin-top:40px;">
-      <div class="guru-group-line"></div>
-      Guru Mata Pelajaran
-    </div>
-    <div class="guru-grid row2 reveal">
-      <div class="guru-card guru-kls">
-        <div class="guru-avatar avatar-blue">👩‍🏫</div>
-        <div class="guru-role-badge badge-blue">Guru Bahasa Inggris</div>
-        <div class="guru-name">Guru Bahasa Inggris</div>
-        <div class="guru-sub">Mata Pelajaran Bahasa Inggris</div>
-      </div>
-      <div class="guru-card guru-kls">
-        <div class="guru-avatar avatar-blue">👨‍🏫</div>
-        <div class="guru-role-badge badge-blue">Guru PAI</div>
-        <div class="guru-name">Guru PAI</div>
-        <div class="guru-sub">Pendidikan Agama Islam</div>
-      </div>
-    </div>
-
-    <!-- Staf -->
-    <div class="guru-group-title" style="margin-top:40px;">
-      <div class="guru-group-line"></div>
-      Tenaga Kependidikan &amp; Staf
-    </div>
-    <div class="guru-grid row2 reveal">
-      <div class="guru-card staf-card">
-        <div class="guru-avatar avatar-green">💻</div>
-        <div class="guru-role-badge badge-green">Operator Sekolah</div>
-        <div class="guru-name">Operator Sekolah</div>
-        <div class="guru-sub">Administrasi &amp; Sistem Data (Dapodik, SIMAK, eRapor)</div>
-      </div>
-      <div class="guru-card staf-card">
-        <div class="guru-avatar avatar-green">🔐</div>
-        <div class="guru-role-badge badge-green">Penjaga Sekolah</div>
-        <div class="guru-name">Penjaga Sekolah</div>
-        <div class="guru-sub">Keamanan &amp; Kebersihan Lingkungan Sekolah</div>
-      </div>
-    </div>
-
-    <!-- Info note -->
-    <div style="margin-top:40px;background:white;border-radius:14px;padding:20px 24px;border:1px solid var(--gray-200);display:flex;align-items:center;gap:14px;box-shadow:var(--shadow-sm);">
-      <span style="font-size:24px;flex-shrink:0;">ℹ️</span>
-      <p style="font-size:13.5px;color:var(--gray-600);font-weight:600;line-height:1.6;">
-        Nama lengkap tenaga pendidik dan staf akan ditampilkan setelah data resmi tersedia.
-        Untuk informasi lebih lanjut, silakan hubungi kami melalui <a href="#kontak" style="color:var(--blue);font-weight:800;text-decoration:none;">halaman kontak</a> atau WhatsApp sekolah.
-      </p>
-    </div>
-  </div>
-</section>
-
 <!-- ── FOOTER ── -->
 <footer>
   <div class="footer-inner">
@@ -1515,9 +2022,21 @@
         pembinaan karakter, dan pelayanan terbaik untuk seluruh warga sekolah.
       </p>
       <div class="footer-social">
-        <a href="https://www.instagram.com/sdn_19rambahlanai?igsh=dnp2azkwcDlkajd6" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">📸</a>
-        <a href="https://wa.me/6281374314102?text=Hallo%2C%20saya%20ingin%20mengetahui%20informasi%20lebih%20lanjut%20mengenai%20SDN%2019%20Rambah%20Lanai.%20Terima%20kasih%20%🙏🏻%9F%99%8F" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp">💬</a>
-        <a href="mailto:sdn19rambahlanai@gmail.com" class="social-btn" aria-label="Email">📧</a>
+        <a href="https://www.instagram.com/sdn_19rambahlanai?igsh=dnp2azkwcDlkajd6" target="_blank" rel="noopener" class="social-btn ig" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+        <a href="https://wa.me/6281374314102?text=Hallo%2C%20saya%20ingin%20mengetahui%20informasi%20lebih%20lanjut%20mengenai%20SDN%2019%20Rambah%20Lanai.%20Terima%20kasih%20%F0%9F%99%8F" target="_blank" rel="noopener" class="social-btn wa" aria-label="WhatsApp">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </a>
+        <a href="mailto:sdn19rambahlanai@gmail.com" class="social-btn em" aria-label="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </a>
       </div>
     </div>
     <div>
@@ -1568,6 +2087,28 @@
     document.getElementById('navbar').style.boxShadow =
       window.scrollY > 10 ? '0 4px 24px rgba(30,58,138,.15)' : '0 2px 8px rgba(30,58,138,.08)';
   });
+
+  // Kalender TP selector
+  function showTP(n) {
+    document.getElementById('tp1').style.display = n === 1 ? 'block' : 'none';
+    document.getElementById('tp2').style.display = n === 2 ? 'block' : 'none';
+    document.getElementById('tpBtn1').classList.toggle('active-tab', n === 1);
+    document.getElementById('tpBtn2').classList.toggle('active-tab', n === 2);
+  }
+  // Kalender tab switch TP 2025/2026
+  function showSem(n) {
+    document.getElementById('sem1').style.display = n === 1 ? 'block' : 'none';
+    document.getElementById('sem2').style.display = n === 2 ? 'block' : 'none';
+    document.getElementById('tab1').classList.toggle('active-tab', n === 1);
+    document.getElementById('tab2').classList.toggle('active-tab', n === 2);
+  }
+  // Kalender tab switch TP 2026/2027
+  function showSem27(n) {
+    document.getElementById('sem27a').style.display = n === 1 ? 'block' : 'none';
+    document.getElementById('sem27b').style.display = n === 2 ? 'block' : 'none';
+    document.getElementById('tab27a').classList.toggle('active-tab', n === 1);
+    document.getElementById('tab27b').classList.toggle('active-tab', n === 2);
+  }
 
   // Smooth active nav
   const sections = document.querySelectorAll('section[id], footer');
